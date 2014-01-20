@@ -16,9 +16,9 @@ def test_err(W,testset,testlabels,Y):
         label = testlabels[t]-1
         WyX = np.dot(W[label],testset[t])
         hinge += max([(y!=label) + np.dot(W[y],testset[t])-WyX for y in range(Y)])
-        zero_one += max(range(Y),key = lambda y:np.dot(W[y],testset[t])) != label
+        zero_one += (1 if (max(range(Y),key = lambda y:np.dot(W[y],testset[t]))) != label else 0)
 
-    return (hinge/len(testset),zero_one/len(testset))
+    return (hinge/len(testset),float(zero_one)/len(testset))
         
     
 
@@ -108,7 +108,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
         zero_one_best_averages[t] = zero_one_best_total/float(t+1)
 
 
-        if(t%1000 == 0):
+        if(t%100000 == 0):
             print "Calculating test error"
             lte = test_err(W,testset,testlabels,Y)
             ete = test_err(best,testset,testlabels,Y)
@@ -122,8 +122,15 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
             timepoints.append(t)
             print "done!"
 
+
+
+    print "Expert training Hinge loss: ",ft_best_averages[t]
+    print "Expert training Zero-One Loss: ",zero_one_best_averages[t]
+
     tvals = np.arange(1,T+1)
     plt.clf()
+
+
 
     plt.plot(tvals,ft_averages,label="Hinge Loss, Learner")
     
@@ -135,7 +142,12 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.savefig(("lossplots_eta"+str(eta)).replace(".","p"))
     plt.show()
 
+
+    print "Expert test Hinge Loss: ",eth[0]
+    print "Expert test Zero-One Loss: ",etz[0]
+
     plt.clf()
+
 
     plt.plot(timepoints,lth,label ="Test Hinge Loss, Learner")
     plt.plot(timepoints,ltz,label = "Test Zero-One Loss, Learner")
