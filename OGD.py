@@ -135,17 +135,20 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.clf()
 
 
-
+    
     plt.plot(tvals,ft_averages,label="Hinge Loss, Learner")
     
     plt.plot(tvals,ft_best_averages,label="Hinge Loss, Expert")
     plt.plot(tvals,zero_one_averages,label = "Zero-One Loss, Learner")
     plt.plot(tvals,zero_one_best_averages,label ="Zero-One Loss, Expert")
+    plt.xlabel("t")
 
+    plt.ylabel("loss")
     plt.title("Average Hinge and Zero-One Losses, eta = "+str(eta))
     plt.legend()
     plt.savefig(("figs/lossplots_eta"+str(eta)).replace(".","p"))
     plt.ylim(0,0.5)
+    plt.title("Average Hinge and Zero-One Losses - zoomed in, eta = "+str(eta))
     plt.savefig(("figs/lossplots_zoomedin_eta"+str(eta)).replace(".","p"))
 
  #   plt.show()
@@ -162,11 +165,15 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.plot(timepoints,ltz,label = "Test Zero-One Loss, Learner")
     plt.plot(timepoints,eth,label="Test Hinge Loss, Expert")
     plt.plot(timepoints,etz,label = "Test Zero-One Loss, Expert")
+    plt.xlabel("t")
+
+    plt.ylabel("loss")
     plt.title("Test Loss, eta = "+str(eta))
     plt.legend()
 
     plt.savefig(("figs/testloss_eta"+str(eta)).replace(".","p"))
     plt.ylim(0,0.5)
+    plt.title("Test Loss - zoomed in, eta = "+str(eta))
     plt.savefig(("figs/testloss_zoomedin_eta"+str(eta)).replace(".","p"))
 
 #    plt.show()
