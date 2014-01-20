@@ -143,9 +143,9 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
 
     plt.title("Average Hinge and Zero-One Losses, eta = "+str(eta))
     plt.legend()
-    plt.savefig(("lossplots_eta"+str(eta)).replace(".","p"))
+    plt.savefig(("figs/lossplots_eta"+str(eta)).replace(".","p"))
     plt.ylim(0,0.5)
-    plt.savefig(("lossplots_zoomedin_eta"+str(eta)).replace(".","p"))
+    plt.savefig(("figs/lossplots_zoomedin_eta"+str(eta)).replace(".","p"))
 
     plt.show()
 
@@ -163,9 +163,9 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.title("Test Loss, eta = "+str(eta))
     plt.legend()
 
-    plt.savefig(("testloss_eta"+str(eta)).replace(".","p"))
+    plt.savefig(("figs/testloss_eta"+str(eta)).replace(".","p"))
     plt.ylim(0,0.5)
-    plt.savefig(("testloss_zoomedin_eta"+str(eta)).replace(".","p"))
+    plt.savefig(("figs/testloss_zoomedin_eta"+str(eta)).replace(".","p"))
 
     plt.show()
 
