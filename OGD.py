@@ -57,7 +57,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     for t in range(T):
         #get prediction
         if(t%1000==0):
-            print "on iteration: ",t
+            print "on iteration: "+str(t)+" for eta = "+str(eta)
         p = max(range(Y),key = lambda y:np.dot(W[y],trials[t]))
 
         label = labels[t]-1
@@ -108,7 +108,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
         zero_one_best_averages[t] = zero_one_best_total/float(t+1)
 
 
-        if(t%100000 == 0):
+        if(t%1000 == 0):
             print "Calculating test error"
             lte = test_err(W,testset,testlabels,Y)
             ete = test_err(best,testset,testlabels,Y)
@@ -137,9 +137,13 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.plot(tvals,ft_best_averages,label="Hinge Loss, Expert")
     plt.plot(tvals,zero_one_averages,label = "Zero-One Loss, Learner")
     plt.plot(tvals,zero_one_best_averages,label ="Zero-One Loss, Expert")
+
     plt.title("Average Hinge and Zero-One Losses, eta = "+str(eta))
     plt.legend()
     plt.savefig(("lossplots_eta"+str(eta)).replace(".","p"))
+    plt.ylim(0,0.75)
+    plt.savefig(("lossplots_zoomedin_eta"+str(eta)).replace(".","p"))
+
     plt.show()
 
 
@@ -155,7 +159,10 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.plot(timepoints,etz,label = "Test Zero-One Loss, Expert")
 
     plt.legend()
+
     plt.savefig(("testloss_eta"+str(eta)).replace(".","p"))
+    plt.ylim(0,0.75)
+    plt.savefig(("testloss_zoomedin_eta"+str(eta)).replace(".","p"))
 
     plt.show()
 
