@@ -1,0 +1,84 @@
+starting to learn!
+len labels: 60000
+len trials: 60000
+Running OGD for eta =  0.03
+Expert training Hinge loss:  0.162768969302
+Expert training Zero-One Loss:  0.0542166666667
+Learner training Hinge Loss:  0.495745156109
+Learner training Zero-One Loss:  0.1237
+Expert test Hinge Loss:  0.226269696714
+Expert test Zero-One Loss:  0.0734
+Learner test Hinge Loss:  0.446045897163
+Learner test Zero-One Loss:  0.0979
+starting to learn!
+len labels: 60000
+len trials: 60000
+Running OGD for eta =  1.0
+Expert training Hinge loss:  0.162768969302
+Expert training Zero-One Loss:  0.0542166666667
+Learner training Hinge Loss:  10.1947462509
+Learner training Zero-One Loss:  0.144816666667
+Expert test Hinge Loss:  0.226269696714
+Expert test Zero-One Loss:  0.0734
+Learner test Hinge Loss:  10.5550206044
+Learner test Zero-One Loss:  0.1325
+starting to learn!
+len labels: 60000
+len trials: 60000
+Running OGD for eta =  0.1
+Expert training Hinge loss:  0.162768969302
+Expert training Zero-One Loss:  0.0542166666667
+Learner training Hinge Loss:  1.19308999903
+Learner training Zero-One Loss:  0.138333333333
+Expert test Hinge Loss:  0.226269696714
+Expert test Zero-One Loss:  0.0734
+Learner test Hinge Loss:  1.12373492611
+Learner test Zero-One Loss:  0.1129
+starting to learn!
+len labels: 60000
+len trials: 60000
+Running OGD for eta =  0.01
+Expert training Hinge loss:  0.162768969302
+Expert training Zero-One Loss:  0.0542166666667
+Learner training Hinge Loss:  0.31499021493
+Learner training Zero-One Loss:  0.109683333333
+Expert test Hinge Loss:  0.226269696714
+Expert test Zero-One Loss:  0.0734
+Learner test Hinge Loss:  0.30018840569
+Learner test Zero-One Loss:  0.0969
+starting to learn!
+len labels: 60000
+len trials: 60000
+Running OGD for eta =  0.02
+Expert training Hinge loss:  0.162768969302
+Expert training Zero-One Loss:  0.0542166666667
+Learner training Hinge Loss:  0.404069876278
+Learner training Zero-One Loss:  0.119533333333
+Expert test Hinge Loss:  0.226269696714
+Expert test Zero-One Loss:  0.0734
+Learner test Hinge Loss:  0.393748575932
+Learner test Zero-One Loss:  0.1023
+starting to learn!
+len labels: 60000
+len trials: 60000
+Running OGD for eta =  0.04
+Expert training Hinge loss:  0.162768969302
+Expert training Zero-One Loss:  0.0542166666667
+Learner training Hinge Loss:  0.59732642518
+Learner training Zero-One Loss:  0.1283
+Expert test Hinge Loss:  0.226269696714
+Expert test Zero-One Loss:  0.0734
+Learner test Hinge Loss:  0.554021762953
+Learner test Zero-One Loss:  0.1049
+starting to learn!
+len labels: 60000
+len trials: 60000
+Running OGD for eta =  0.001
+Expert training Hinge loss:  0.162768969302
+Expert training Zero-One Loss:  0.0542166666667
+Learner training Hinge Loss:  0.301606173084
+Learner training Zero-One Loss:  0.1091
+Expert test Hinge Loss:  0.226269696714
+Expert test Zero-One Loss:  0.0734
+Learner test Hinge Loss:  0.238638527134
+Learner test Zero-One Loss:  0.0871
