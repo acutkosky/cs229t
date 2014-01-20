@@ -88,13 +88,16 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
 #                print "ft recalc: ",(y_for_ft!=label) +np.dot(W[y_for_ft],trials[t])-WyX
 #                print "fail fail: yf: ",y_for_ft
 #                print "fail fail  yt: ",label
+
+        zero_one = (1 if (max(range(Y),key = lambda y:np.dot(W[y],trials[t]))) != label else 0)
+        zero_one_best = (1 if (max(range(Y),key = lambda y:np.dot(best[y],trials[t]))) != label else 0)
             
         W[y_for_ft] -= eta*trials[t]
         W[label] += eta*trials[t]
 
-        zero_one = 1 if (max(range(Y),key = lambda y:np.dot(W[y],trials[t]))) != label else 0
-        zero_one_best = 1 if (max(range(Y),key = lambda y:np.dot(best[y],trials[t]))) != label else 0
 
+
+        
         ft_total += ft
         zero_one_total += zero_one
 
@@ -141,7 +144,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.title("Average Hinge and Zero-One Losses, eta = "+str(eta))
     plt.legend()
     plt.savefig(("lossplots_eta"+str(eta)).replace(".","p"))
-    plt.ylim(0,0.75)
+    plt.ylim(0,0.5)
     plt.savefig(("lossplots_zoomedin_eta"+str(eta)).replace(".","p"))
 
     plt.show()
@@ -157,11 +160,11 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.plot(timepoints,ltz,label = "Test Zero-One Loss, Learner")
     plt.plot(timepoints,eth,label="Test Hinge Loss, Expert")
     plt.plot(timepoints,etz,label = "Test Zero-One Loss, Expert")
-
+    plt.title("Test Loss, eta = "+str(eta))
     plt.legend()
 
     plt.savefig(("testloss_eta"+str(eta)).replace(".","p"))
-    plt.ylim(0,0.75)
+    plt.ylim(0,0.5)
     plt.savefig(("testloss_zoomedin_eta"+str(eta)).replace(".","p"))
 
     plt.show()
