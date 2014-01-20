@@ -53,11 +53,11 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     ltz = []
     eth = []
     etz = []
-
+    print "Running OGD for eta = ",str(eta)
     for t in range(T):
         #get prediction
-        if(t%1000==0):
-            print "on iteration: "+str(t)+" for eta = "+str(eta)
+ #       if(t%1000==0):
+ #           print "on iteration: "+str(t)+" for eta = "+str(eta)
         p = max(range(Y),key = lambda y:np.dot(W[y],trials[t]))
 
         label = labels[t]-1
@@ -112,7 +112,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
 
 
         if(t%1000 == 0):
-            print "Calculating test error"
+#            print "Calculating test error"
             lte = test_err(W,testset,testlabels,Y)
             ete = test_err(best,testset,testlabels,Y)
 
@@ -123,13 +123,14 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
             etz.append(ete[1])
 
             timepoints.append(t)
-            print "done!"
+#            print "done!"
 
 
 
     print "Expert training Hinge loss: ",ft_best_averages[t]
     print "Expert training Zero-One Loss: ",zero_one_best_averages[t]
-
+    print "Learner training Hinge Loss: ",ft_averages[t]
+    print "Learner training Zero-One Loss: ",zero_one_averages[t]
     tvals = np.arange(1,T+1)
     plt.clf()
 
@@ -147,12 +148,13 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.ylim(0,0.5)
     plt.savefig(("figs/lossplots_zoomedin_eta"+str(eta)).replace(".","p"))
 
-    plt.show()
+ #   plt.show()
 
 
     print "Expert test Hinge Loss: ",eth[0]
     print "Expert test Zero-One Loss: ",etz[0]
-
+    print "Learner test Hinge Loss: ",lth[len(lth)-1]
+    print "Learner test Zero-One Loss: ",ltz[len(ltz)-1]
     plt.clf()
 
 
@@ -167,7 +169,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.ylim(0,0.5)
     plt.savefig(("figs/testloss_zoomedin_eta"+str(eta)).replace(".","p"))
 
-    plt.show()
+#    plt.show()
 
 
 def setup(matrixfile,Y,eta,bestfile,testfile):
