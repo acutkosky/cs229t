@@ -55,9 +55,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     etz = []
     print "Running OGD for eta = ",str(eta)
     for t in range(T):
-        #get prediction
- #       if(t%1000==0):
- #           print "on iteration: "+str(t)+" for eta = "+str(eta)
+
         p = max(range(Y),key = lambda y:np.dot(W[y],trials[t]))
 
         label = labels[t]-1
@@ -68,7 +66,6 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
         y_for_ft = 0
         ft = (0!=label) + np.dot(W[0],trials[t])-WyX
         ft_best=(0!=label)+np.dot(best[0],trials[t])-WyX_best
- #       print "norm: ",WyX#min([np.linalg.norm(W[y]) for y in range(Y)])
 
         for y in range(Y):
             temp = (y!=label) + np.dot(W[y],trials[t])-WyX
@@ -81,13 +78,8 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
             if(temp_best>ft_best):
                 ft_best = temp_best
 
-#        print "ft: ",ft
         if(ft == 0):
             assert(y_for_ft == label)
-#                print "ft: ",ft
-#                print "ft recalc: ",(y_for_ft!=label) +np.dot(W[y_for_ft],trials[t])-WyX
-#                print "fail fail: yf: ",y_for_ft
-#                print "fail fail  yt: ",label
 
         zero_one = (1 if (max(range(Y),key = lambda y:np.dot(W[y],trials[t]))) != label else 0)
         zero_one_best = (1 if (max(range(Y),key = lambda y:np.dot(best[y],trials[t]))) != label else 0)
@@ -112,7 +104,6 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
 
 
         if(t%1000 == 0):
-#            print "Calculating test error"
             lte = test_err(W,testset,testlabels,Y)
             ete = test_err(best,testset,testlabels,Y)
 
@@ -123,7 +114,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
             etz.append(ete[1])
 
             timepoints.append(t)
-#            print "done!"
+
 
 
 
@@ -151,7 +142,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.title("Average Hinge and Zero-One Losses - zoomed in, eta = "+str(eta))
     plt.savefig(("figs/lossplots_zoomedin_eta"+str(eta)).replace(".","p"))
 
- #   plt.show()
+
 
 
     print "Expert test Hinge Loss: ",eth[0]
@@ -176,7 +167,7 @@ def OGD_learn(trials,labels,Y,eta,best,testset,testlabels,T=None):
     plt.title("Test Loss - zoomed in, eta = "+str(eta))
     plt.savefig(("figs/testloss_zoomedin_eta"+str(eta)).replace(".","p"))
 
-#    plt.show()
+
 
 
 def setup(matrixfile,Y,eta,bestfile,testfile):
